@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Берикбол Даулет Куатбекулы — Врач-онколог</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green-dark:  #2d5016;
+      --green:       #3d6b1e;
+      --green-mid:   #5a8a2e;
+      --green-light: #7aaa42;
+      --green-pale:  #e8f0d8;
+      --green-bg:    #f2f6ea;
+      --earth:       #8b6914;
+      --earth-light: #c4952a;
+      --cream:       #faf8f3;
+      --warm-white:  #f5f1e8;
+      --tan:         #ede5d0;
+      --brown-text:  #3a2e1e;
+      --gray-text:   #6b6355;
+      --border:      #d8cdb8;
+      --white:       #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--brown-text);
+      font-family: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* ── TOP BAR ── */
+    .top-bar {
+      background: var(--green-dark);
+      text-align: center;
+      padding: 8px 24px;
+      font-size: 12px;
+      letter-spacing: .08em;
+      color: rgba(255,255,255,.8);
+    }
+    .top-bar a { color: var(--green-light); text-decoration: none; font-weight: 600; }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--white);
+      border-bottom: 3px solid var(--green-mid);
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,.07);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .nav-logo {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+    }
+    .nav-logo-name {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--green-dark);
+      line-height: 1.1;
+    }
+    .nav-logo-title {
+      font-size: 11px;
+      color: var(--gray-text);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex;
+      gap: 0;
+      list-style: none;
+    }
+    .nav-links a {
+      display: block;
+      padding: 8px 18px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--brown-text);
+      text-decoration: none;
+      border-radius: 3px;
+      transition: color .2s, background .2s;
+    }
+    .nav-links a:hover {
+      color: var(--green);
+      background: var(--green-bg);
+    }
+    .nav-cta {
+      background: var(--green);
+      color: var(--white) !important;
+      padding: 10px 24px !important;
+      border-radius: 4px !important;
+      font-weight: 600 !important;
+      transition: background .2s !important;
+    }
+    .nav-cta:hover { background: var(--green-dark) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--green-dark);
+      position: relative;
+      overflow: hidden;
+      min-height: 540px;
+      display: flex;
+      align-items: center;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(100deg, rgba(45,80,22,.97) 45%, rgba(45,80,22,.6) 75%, transparent 100%),
+        url('https://tomo.kz/upload/iblock/bee/bee5c2dea2c5bd88778d60ed7ce6da3a.jpg') right top / cover no-repeat;
+    }
+    .hero-content {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 40px;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 60px;
+      align-items: center;
+      width: 100%;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      background: var(--earth-light);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 2px;
+      margin-bottom: 20px;
+    }
+    .hero-title {
+      font-family: 'Lora', Georgia, serif;
+      font-size: clamp(36px, 4.5vw, 58px);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.12;
+      margin-bottom: 10px;
+    }
+    .hero-subtitle {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 18px;
+      font-style: italic;
+      color: var(--green-light);
+      margin-bottom: 22px;
+    }
+    .hero-desc {
+      font-size: 16px;
+      color: rgba(255,255,255,.75);
+      line-height: 1.75;
+      max-width: 520px;
+      margin-bottom: 36px;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-green {
+      background: var(--green-light);
+      color: var(--white);
+      padding: 13px 30px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-decoration: none;
+      border-radius: 4px;
+      border: 2px solid transparent;
+      transition: background .2s;
+    }
+    .btn-green:hover { background: var(--green-mid); }
+    .btn-outline-white {
+      background: transparent;
+      color: rgba(255,255,255,.9);
+      padding: 11px 28px;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: .04em;
+      text-decoration: none;
+      border-radius: 4px;
+      border: 2px solid rgba(255,255,255,.4);
+      transition: border-color .2s, color .2s;
+    }
+    .btn-outline-white:hover { border-color: rgba(255,255,255,.8); color: #fff; }
+
+    /* hero card */
+    .hero-card {
+      background: var(--white);
+      border-radius: 6px;
+      padding: 36px 32px;
+      box-shadow: 0 8px 40px rgba(0,0,0,.25);
+    }
+    .hero-card-title {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--green-dark);
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--green-pale);
+    }
+    .stat-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .stat-row:last-child { border-bottom: none; }
+    .stat-num { font-family: 'Lora', serif; font-size: 28px; font-weight: 600; color: var(--green); line-height: 1; }
+    .stat-label { font-size: 13px; color: var(--gray-text); line-height: 1.4; }
+
+    /* ── SECTION WRAPPER ── */
+    section { padding: 80px 0; }
+    .section-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+
+    .section-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 12px;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--green-light);
+    }
+    .section-heading {
+      font-family: 'Lora', Georgia, serif;
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--brown-text);
+    }
+    .section-subtext {
+      font-size: 16px;
+      color: var(--gray-text);
+      line-height: 1.8;
+      max-width: 640px;
+      margin-top: 14px;
+    }
+
+    /* ── ABOUT ── */
+    .about { background: var(--warm-white); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .about-body p {
+      font-size: 16px;
+      line-height: 1.85;
+      color: var(--gray-text);
+      margin-bottom: 18px;
+    }
+    blockquote {
+      margin: 32px 0;
+      padding: 28px 32px;
+      background: var(--green-pale);
+      border-left: 4px solid var(--green);
+      border-radius: 0 4px 4px 0;
+    }
+    blockquote p {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 17px;
+      font-style: italic;
+      color: var(--green-dark) !important;
+      line-height: 1.7;
+      margin: 0 !important;
+    }
+    .info-widget {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .info-widget-head {
+      background: var(--green);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 10px 20px;
+    }
+    .info-widget-body { padding: 20px; }
+    .info-widget-body p { font-size: 14px; color: var(--gray-text); line-height: 1.6; margin-bottom: 6px; }
+    .info-widget-body p:last-child { margin-bottom: 0; }
+    .info-widget-body strong { color: var(--brown-text); }
+
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .badge {
+      background: var(--green-pale);
+      color: var(--green-dark);
+      border: 1px solid rgba(90,138,46,.3);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 13px;
+      border-radius: 30px;
+      letter-spacing: .04em;
+    }
+
+    /* ── METHODS ── */
+    .methods { background: var(--cream); }
+    .methods-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .method-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 36px 32px;
+      transition: box-shadow .25s, transform .25s;
+    }
+    .method-card:hover {
+      box-shadow: 0 8px 32px rgba(61,107,30,.12);
+      transform: translateY(-3px);
+    }
+    .method-icon-wrap {
+      width: 52px; height: 52px;
+      background: var(--green-pale);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 24px;
+    }
+    .method-icon-wrap svg { width: 24px; height: 24px; fill: var(--green); }
+    .method-card h3 {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--brown-text);
+    }
+    .method-card p { font-size: 14px; color: var(--gray-text); line-height: 1.8; }
+    .method-tag {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--green);
+    }
+
+    /* ── CONDITIONS ── */
+    .conditions { background: var(--green-bg); }
+    .cond-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 44px;
+    }
+    .cond-item {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: background .2s, border-color .2s;
+    }
+    .cond-item:hover {
+      background: var(--green-pale);
+      border-color: var(--green-mid);
+    }
+    .cond-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--green-light);
+      flex-shrink: 0;
+    }
+    .cond-name { font-size: 14px; font-weight: 500; color: var(--brown-text); }
+
+    /* ── CAREER ── */
+    .career { background: var(--warm-white); }
+    .career-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-top: 52px;
+    }
+    .tl-section-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 28px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .tl-section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .tl-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+    .tl-period {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--earth);
+      line-height: 1.4;
+      padding-top: 3px;
+      text-align: right;
+    }
+    .tl-body {
+      padding-left: 20px;
+      border-left: 2px solid var(--green-light);
+    }
+    .tl-role {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--brown-text);
+      margin-bottom: 4px;
+    }
+    .tl-place { font-size: 13px; color: var(--gray-text); line-height: 1.5; }
+
+    .memberships-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 4px;
+    }
+    .member-item {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 16px 18px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--green-dark);
+      letter-spacing: .04em;
+    }
+
+    /* ── PUBLICATION ── */
+    .publication { background: var(--tan); }
+    .pub-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .pub-image-wrap {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 12px 48px rgba(0,0,0,.18);
+      aspect-ratio: 4/5;
+      background: url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=700&q=80') center/cover no-repeat;
+    }
+    .pub-text .section-label { margin-bottom: 14px; }
+    .pub-title {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 36px;
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--green-dark);
+      margin-bottom: 20px;
+    }
+    .pub-desc {
+      font-size: 15px;
+      color: var(--gray-text);
+      line-height: 1.8;
+      margin-bottom: 14px;
+    }
+    .pub-speaker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 24px;
+      background: var(--green-pale);
+      border: 1px solid rgba(90,138,46,.3);
+      border-radius: 4px;
+      padding: 10px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--green-dark);
+    }
+    .pub-speaker::before { content: '🎤'; font-size: 15px; }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: var(--green-dark);
+      padding: 100px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1400&q=80') center/cover;
+      opacity: .08;
+    }
+    .cta-inner { position: relative; }
+    .cta-label {
+      display: inline-block;
+      background: var(--earth-light);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 2px;
+      margin-bottom: 20px;
+    }
+    .cta-title {
+      font-family: 'Lora', Georgia, serif;
+      font-size: clamp(30px, 4vw, 48px);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.2;
+      max-width: 640px;
+      margin: 0 auto 16px;
+    }
+    .cta-sub {
+      color: rgba(255,255,255,.65);
+      font-size: 16px;
+      max-width: 500px;
+      margin: 0 auto 44px;
+      line-height: 1.7;
+    }
+    .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--green-dark);
+      border-top: 3px solid var(--green-mid);
+    }
+    .footer-main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 56px 40px 40px;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 60px;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+    .footer-brand-name {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .footer-brand-role { font-size: 12px; color: rgba(255,255,255,.5); letter-spacing: .06em; text-transform: uppercase; margin-bottom: 16px; }
+    .footer-brand-desc { font-size: 13px; color: rgba(255,255,255,.45); line-height: 1.7; }
+    .footer-col-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--green-light);
+      margin-bottom: 18px;
+    }
+    .footer-links-list { list-style: none; }
+    .footer-links-list li { margin-bottom: 10px; }
+    .footer-links-list a {
+      font-size: 13px;
+      color: rgba(255,255,255,.5);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .footer-links-list a:hover { color: var(--green-light); }
+    .footer-copy {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 40px;
+      font-size: 12px;
+      color: rgba(255,255,255,.25);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .hero-content { grid-template-columns: 1fr; }
+      .hero-card { display: none; }
+      .about-grid, .career-grid, .pub-inner { grid-template-columns: 1fr; gap: 40px; }
+      .methods-grid { grid-template-columns: 1fr; }
+      .cond-grid { grid-template-columns: 1fr 1fr; }
+      .footer-main { grid-template-columns: 1fr; gap: 32px; }
+      .section-inner { padding: 0 24px; }
+      section { padding: 60px 0; }
+      .tl-item { grid-template-columns: 1fr; gap: 4px; }
+      .tl-period { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  Ведётся запись на приём · <a href="#contact">Записаться онлайн →</a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <span class="nav-logo-name">Берикбол Даулет Куатбекулы</span>
+      <span class="nav-logo-title">Врач-онколог · Астана</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">О враче</a></li>
+      <li><a href="#methods">Лечение</a></li>
+      <li><a href="#conditions">Специализация</a></li>
+      <li><a href="#career">Карьера</a></li>
+      <li><a href="#publication">Публикации</a></li>
+      <li><a href="#contact" class="nav-cta">Записаться</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div>
+      <div class="hero-eyebrow">Онкология · Радиотерапия · Химиотерапия</div>
+      <h1 class="hero-title">Берикбол Даулет<br/>Куатбекулы</h1>
+      <div class="hero-subtitle">Заведующий отделением радиационной онкологии и химиотерапии</div>
+      <p class="hero-desc">
+        Международный онкологический центр томотерапии «ҮМІТ», Астана. Более 10 лет опыта, 5 000+ пролеченных пациентов. Комплексный подход к лечению онкологических заболеваний любых локализаций.
+      </p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-green">Записаться на консультацию</a>
+        <a href="#about" class="btn-outline-white">Подробнее о враче</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-title">Ключевые показатели</div>
+      <div class="stat-row">
+        <div class="stat-num">10+</div>
+        <div class="stat-label">лет опыта<br/>в онкологии</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-num">5 000+</div>
+        <div class="stat-label">пролеченных<br/>пациентов</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-num">10 000+</div>
+        <div class="stat-label">проведённых<br/>консультаций</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-num">5+</div>
+        <div class="stat-label">международных<br/>профессиональных сообществ</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-body">
+        <div class="section-label">О враче</div>
+        <h2 class="section-heading">Индивидуальный подход на каждом этапе</h2>
+        <p>Врач-онколог с более чем 10-летним опытом. Заведует отделением радиационной онкологии и химиотерапии — одним из наиболее технически оснащённых в Казахстане.</p>
+        <p>За годы практики пролечил более 5 000 пациентов и провёл свыше 10 000 консультаций при всех видах онкологических заболеваний. Подход к лечению — комплексный.</p>
+        <p>В зависимости от диагноза, стадии и состояния пациента применяет лучевую терапию, химиотерапию или их сочетание. Консультирует на всех этапах: от первичной диагностики и выбора тактики до наблюдения после завершения лечения.</p>
+        <blockquote>
+          <p>«Моя цель — не только бороться с болезнью, но и сохранять качество жизни пациента на каждом этапе лечения. Каждый случай требует индивидуального подхода: современных технологий, внимания и открытого разговора.»</p>
+        </blockquote>
+      </div>
+      <div>
+        <div class="info-widget">
+          <div class="info-widget-head">Место работы</div>
+          <div class="info-widget-body">
+            <p><strong>Международный онкологический центр томотерапии «ҮМІТ»</strong></p>
+            <p>Астана, Казахстан</p>
+            <p>Заведующий отделением радиационной онкологии и химиотерапии с 2019 года</p>
+          </div>
+        </div>
+        <div class="info-widget">
+          <div class="info-widget-head">Образование</div>
+          <div class="info-widget-body">
+            <p><strong>Государственный медицинский университет, Семей</strong></p>
+            <p>Специальность — лечебное дело</p>
+            <p style="margin-top:10px;"><strong>Стажировка:</strong> Институт онкологии им. Марии Склодовской-Кюри, Варшава — высокодозная брахитерапия</p>
+          </div>
+        </div>
+        <div class="info-widget">
+          <div class="info-widget-head">Членство в сообществах</div>
+          <div class="info-widget-body">
+            <div class="badge-row">
+              <span class="badge">ESTRO</span>
+              <span class="badge">ASCO</span>
+              <span class="badge">RUSSCO</span>
+              <span class="badge">CSCO</span>
+              <span class="badge">Общество онкологов РК</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHODS -->
+<section class="methods" id="methods">
+  <div class="section-inner">
+    <div class="section-label">Методы лечения</div>
+    <h2 class="section-heading">Современные технологии — точечный результат</h2>
+    <div class="methods-grid">
+      <div class="method-card">
+        <div class="method-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+        </div>
+        <h3>Лучевая терапия</h3>
+        <p>Томотерапия, IMRT, IGRT, стереотаксическое облучение — точечное воздействие на опухоль с минимальной нагрузкой на здоровые ткани.</p>
+        <div class="method-tag">Томотерапия · IMRT · IGRT · SBRT</div>
+      </div>
+      <div class="method-card">
+        <div class="method-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg>
+        </div>
+        <h3>Химиотерапия</h3>
+        <p>Подбор и контроль режимов лекарственного лечения, сопроводительная терапия, управление побочными эффектами с учётом состояния пациента.</p>
+        <div class="method-tag">Системное лечение · Сопроводительная терапия</div>
+      </div>
+      <div class="method-card">
+        <div class="method-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+        </div>
+        <h3>Консультации</h3>
+        <p>Приём при любом онкологическом диагнозе: разбор результатов обследований, второе мнение, составление индивидуального плана лечения.</p>
+        <div class="method-tag">Первичный приём · Второе мнение · Онлайн</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONDITIONS -->
+<section class="conditions" id="conditions">
+  <div class="section-inner">
+    <div class="section-label">Специализация</div>
+    <h2 class="section-heading">Консультирует при онкологических заболеваниях</h2>
+    <div class="cond-grid">
+      <div class="cond-item"><div class="cond-dot"></div><div class="cond-name">Молочная железа</div></div>
+      <div class="cond-item"><div class="cond-dot"></div><div class="cond-name">Предстательная железа</div></div>
+      <div class="cond-item"><div class="cond-dot"></div><div class="cond-name">Лёгкое</div></div>
+      <div class="cond-item"><div class="cond-dot"></div><div class="cond-name">Шейка матки</div></div>
+      <div class="cond-item"><div class="cond-dot"></div><div class="cond-name">Головной мозг</div></div>
+      <div class="cond-item"><div class="cond-dot"></div><div class="cond-name">Голова и шея</div></div>
+      <div class="cond-item"><div class="cond-dot"></div><div class="cond-name">ЖКТ</div></div>
+      <div class="cond-item"><div class="cond-dot"></div><div class="cond-name">Прямая кишка</div></div>
+      <div class="cond-item"><div class="cond-dot"></div><div class="cond-name">Мочевой пузырь</div></div>
+      <div class="cond-item"><div class="cond-dot"></div><div class="cond-name">Лимфомы</div></div>
+      <div class="cond-item"><div class="cond-dot"></div><div class="cond-name">Другие локализации</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CAREER -->
+<section class="career" id="career">
+  <div class="section-inner">
+    <div class="section-label">Карьера и обучение</div>
+    <h2 class="section-heading">Опыт, сформированный в ведущих центрах</h2>
+    <div class="career-grid">
+      <div>
+        <div class="tl-section-title">Профессиональный путь</div>
+        <div class="tl-item">
+          <div class="tl-period">2019 — н.в.</div>
+          <div class="tl-body">
+            <div class="tl-role">Заведующий отделением радиационной онкологии и химиотерапии</div>
+            <div class="tl-place">Международный онкологический центр томотерапии «ҮМІТ», Астана</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-period">До 2019</div>
+          <div class="tl-body">
+            <div class="tl-role">Врач-радиационный онколог</div>
+            <div class="tl-place">Центр ядерной медицины и онкологии, Семей</div>
+          </div>
+        </div>
+
+        <div class="tl-section-title" style="margin-top:44px;">Международные стажировки</div>
+        <div class="tl-item">
+          <div class="tl-period">Варшава</div>
+          <div class="tl-body">
+            <div class="tl-role">Институт онкологии им. Марии Склодовской-Кюри</div>
+            <div class="tl-place">Высокодозная брахитерапия, лучевое лечение гематологических заболеваний у детей</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="tl-section-title">Членство в сообществах</div>
+        <div class="memberships-grid">
+          <div class="member-item">ESTRO</div>
+          <div class="member-item">ASCO</div>
+          <div class="member-item">RUSSCO</div>
+          <div class="member-item">CSCO</div>
+          <div class="member-item" style="grid-column:1/-1;">Общество онкологов Республики Казахстан</div>
+        </div>
+        <div style="margin-top:32px; background:var(--white); border:1px solid var(--border); border-radius:6px; overflow:hidden;">
+          <div class="info-widget-head">Образование</div>
+          <div class="info-widget-body">
+            <p><strong>Государственный медицинский университет, Семей</strong></p>
+            <p>Специальность — лечебное дело</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATION -->
+<section class="publication" id="publication">
+  <div class="section-inner">
+    <div class="pub-inner">
+      <div class="pub-image-wrap"></div>
+      <div class="pub-text">
+        <div class="section-label">Публикации</div>
+        <div class="pub-title">«Дневники онкопациентов»</div>
+        <p class="pub-desc">
+          Книга для людей, столкнувшихся с онкологическим заболеванием. Объединяет реальные истории пациентов, клинический опыт врача и практические рекомендации по прохождению лечения.
+        </p>
+        <p class="pub-desc">
+          Написана открытым языком — для пациентов и их близких, которые оказались перед лицом онкологического диагноза и ищут поддержку и ориентиры.
+        </p>
+        <div class="pub-speaker">
+          Постоянный спикер международных конгрессов по онкологии и радиотерапии
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="cta-inner">
+    <div class="cta-label">Записаться на приём</div>
+    <h2 class="cta-title">Получите консультацию врача-онколога в Астане</h2>
+    <p class="cta-sub">Приём ведётся в Международном онкологическом центре томотерапии «ҮМІТ». Консультации при всех онкологических заболеваниях.</p>
+    <div class="cta-btns">
+      <a href="https://wa.me/77074234273" target="_blank" rel="noopener" class="btn-green">WhatsApp</a>
+      <a href="tel:+77074234273" class="btn-outline-white">+7 707 423 42 73</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <div>
+      <div class="footer-brand-name">Берикбол Даулет Куатбекулы</div>
+      <div class="footer-brand-role">Врач-онколог · Астана, Казахстан</div>
+      <p class="footer-brand-desc">Заведующий отделением радиационной онкологии и химиотерапии Международного онкологического центра томотерапии «ҮМІТ».</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Навигация</div>
+      <ul class="footer-links-list">
+        <li><a href="#about">О враче</a></li>
+        <li><a href="#methods">Методы лечения</a></li>
+        <li><a href="#conditions">Специализация</a></li>
+        <li><a href="#career">Карьера</a></li>
+        <li><a href="#publication">Публикации</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Контакты</div>
+      <ul class="footer-links-list">
+        <li><a href="#contact">Записаться на приём</a></li>
+        <li><a href="https://wa.me/77074234273" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><a href="tel:+77074234273">+7 707 423 42 73</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-copy">
+    <span>© 2024 Берикбол Даулет Куатбекулы. Все права защищены.</span>
+    <span>Центр «ҮМІТ», Астана, Казахстан</span>
+  </div>
+</footer>
+
+</body>
+</html>
