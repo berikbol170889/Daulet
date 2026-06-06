@@ -767,26 +767,98 @@
   </div>
 </section>
 
+<!-- MODAL -->
+<div id="cond-modal" style="display:none; position:fixed; inset:0; z-index:500; align-items:center; justify-content:center;">
+  <div id="cond-overlay" style="position:absolute; inset:0; background:rgba(0,0,0,.55); backdrop-filter:blur(3px);"></div>
+  <div id="cond-box" style="position:relative; z-index:1; background:#fff; border-radius:10px; max-width:520px; width:90%; padding:44px 40px 36px; box-shadow:0 24px 80px rgba(0,0,0,.25); animation:modalIn .22s ease;">
+    <button id="cond-close" style="position:absolute; top:16px; right:18px; background:none; border:none; font-size:22px; color:#888; cursor:pointer; line-height:1;">&#10005;</button>
+    <div id="cond-tag" style="font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#5a8a2e; margin-bottom:10px;"></div>
+    <h3 id="cond-title" style="font-family:'Lora',Georgia,serif; font-size:26px; font-weight:600; color:#2d5016; margin-bottom:18px; line-height:1.2;"></h3>
+    <div id="cond-body" style="font-size:15px; color:#6b6355; line-height:1.8;"></div>
+    <a href="https://wa.me/77074234273" target="_blank" rel="noopener" style="display:inline-block; margin-top:28px; background:#3d6b1e; color:#fff; padding:12px 28px; border-radius:4px; font-size:14px; font-weight:600; text-decoration:none;">Записаться на консультацию</a>
+  </div>
+</div>
+
+<style>
+@keyframes modalIn { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+.cond-item { cursor:pointer; }
+.cond-item:hover .cond-arrow { opacity:1; }
+.cond-arrow { opacity:0; transition:opacity .2s; font-size:12px; color:#5a8a2e; margin-left:auto; }
+</style>
+
 <!-- CONDITIONS -->
 <section class="conditions" id="conditions">
   <div class="section-inner">
     <div class="section-label">Специализация</div>
     <h2 class="section-heading">Консультирует при онкологических заболеваниях</h2>
-    <div class="cond-grid">
-      <div class="cond-item"><div class="cond-dot"></div><div class="cond-name">Молочная железа</div></div>
-      <div class="cond-item"><div class="cond-dot"></div><div class="cond-name">Предстательная железа</div></div>
-      <div class="cond-item"><div class="cond-dot"></div><div class="cond-name">Лёгкое</div></div>
-      <div class="cond-item"><div class="cond-dot"></div><div class="cond-name">Шейка матки</div></div>
-      <div class="cond-item"><div class="cond-dot"></div><div class="cond-name">Головной мозг</div></div>
-      <div class="cond-item"><div class="cond-dot"></div><div class="cond-name">Голова и шея</div></div>
-      <div class="cond-item"><div class="cond-dot"></div><div class="cond-name">ЖКТ</div></div>
-      <div class="cond-item"><div class="cond-dot"></div><div class="cond-name">Прямая кишка</div></div>
-      <div class="cond-item"><div class="cond-dot"></div><div class="cond-name">Мочевой пузырь</div></div>
-      <div class="cond-item"><div class="cond-dot"></div><div class="cond-name">Лимфомы</div></div>
-      <div class="cond-item"><div class="cond-dot"></div><div class="cond-name">Другие локализации</div></div>
+    <p style="margin-top:12px; font-size:14px; color:var(--gray-text);">Нажмите на заболевание, чтобы узнать подробнее</p>
+    <div class="cond-grid" style="margin-top:28px;">
+
+      <div class="cond-item" onclick="openModal('Рак молочной железы','Онкология','Наиболее распространённый вид рака у женщин. Лечение включает лучевую терапию (в том числе после операции), химиотерапию и гормонотерапию. Томотерапия позволяет точно облучать зону опухоли и регионарные лимфоузлы, минимизируя дозу на сердце и лёгкие.')">
+        <div class="cond-dot"></div><div class="cond-name">Молочная железа</div><div class="cond-arrow">→</div>
+      </div>
+
+      <div class="cond-item" onclick="openModal('Рак предстательной железы','Онкология','Один из самых распространённых видов рака у мужчин. Лучевая терапия (IMRT, стереотаксическое облучение) — эффективная альтернатива операции на всех стадиях. Современные методики позволяют провести весь курс за 5 сеансов SBRT с высокой точностью.')">
+        <div class="cond-dot"></div><div class="cond-name">Предстательная железа</div><div class="cond-arrow">→</div>
+      </div>
+
+      <div class="cond-item" onclick="openModal('Рак лёгкого','Онкология','Занимает первое место среди причин онкологической смертности. При ранних стадиях стереотаксическая лучевая терапия (SBRT/SABR) — эффективная альтернатива операции. При местнораспространённых формах применяется химиолучевое лечение.')">
+        <div class="cond-dot"></div><div class="cond-name">Лёгкое</div><div class="cond-arrow">→</div>
+      </div>
+
+      <div class="cond-item" onclick="openModal('Рак шейки матки','Онкология','Лечение сочетает дистанционную лучевую терапию и брахитерапию (внутриполостное облучение) с химиотерапией. Высокодозная брахитерапия под контролем МРТ — современный стандарт, позволяющий достичь высокого контроля опухоли с сохранением функции органов.')">
+        <div class="cond-dot"></div><div class="cond-name">Шейка матки</div><div class="cond-arrow">→</div>
+      </div>
+
+      <div class="cond-item" onclick="openModal('Опухоли головного мозга','Нейроонкология','Лечение включает стереотаксическую радиохирургию (единственный сеанс) и фракционированную стереотаксическую лучевую терапию. Томотерапия обеспечивает высокую точность при щажении гиппокампа и снижении когнитивных нарушений.')">
+        <div class="cond-dot"></div><div class="cond-name">Головной мозг</div><div class="cond-arrow">→</div>
+      </div>
+
+      <div class="cond-item" onclick="openModal('Опухоли головы и шеи','Онкология','Включают рак гортани, глотки, полости рта, слюнных желёз. Лучевая терапия — основной метод или часть комплексного лечения. IMRT и томотерапия позволяют защитить слюнные железы, спинной мозг и снизить побочные эффекты.')">
+        <div class="cond-dot"></div><div class="cond-name">Голова и шея</div><div class="cond-arrow">→</div>
+      </div>
+
+      <div class="cond-item" onclick="openModal('Онкология ЖКТ','Онкология','Рак желудка, поджелудочной железы, печени, жёлчных протоков. Лучевая терапия применяется в предоперационном, послеоперационном режиме или как самостоятельный метод. Стереотаксическое облучение печени и поджелудочной железы позволяет воздействовать на опухоль с минимальной нагрузкой на органы.')">
+        <div class="cond-dot"></div><div class="cond-name">ЖКТ</div><div class="cond-arrow">→</div>
+      </div>
+
+      <div class="cond-item" onclick="openModal('Рак прямой кишки','Онкология','Предоперационная химиолучевая терапия — стандарт лечения местнораспространённого рака прямой кишки. Позволяет уменьшить опухоль, повысить вероятность органосохраняющей операции и снизить риск рецидива. Томотерапия обеспечивает точное облучение с защитой мочевого пузыря и тонкого кишечника.')">
+        <div class="cond-dot"></div><div class="cond-name">Прямая кишка</div><div class="cond-arrow">→</div>
+      </div>
+
+      <div class="cond-item" onclick="openModal('Рак мочевого пузыря','Онкология','Лучевая терапия в сочетании с химиотерапией — органосохраняющая альтернатива удалению мочевого пузыря. Применяется IMRT и IGRT с ежедневной визуализацией для точного учёта наполнения мочевого пузыря и положения опухоли.')">
+        <div class="cond-dot"></div><div class="cond-name">Мочевой пузырь</div><div class="cond-arrow">→</div>
+      </div>
+
+      <div class="cond-item" onclick="openModal('Лимфомы','Гематоонкология','Лимфома Ходжкина и неходжкинские лимфомы. Лучевая терапия применяется в консолидирующем режиме после химиотерапии или при локализованных формах. Современные методики (involved-site RT) позволяют свести к минимуму облучение здоровых тканей.')">
+        <div class="cond-dot"></div><div class="cond-name">Лимфомы</div><div class="cond-arrow">→</div>
+      </div>
+
+      <div class="cond-item" onclick="openModal('Другие локализации','Онкология','Рак почки, надпочечников, кожи (меланома), кости, мягкие ткани, метастазы в позвоночник и другие органы. Стереотаксическое облучение метастазов позволяет эффективно контролировать болезнь и сохранять качество жизни. Консультирую при любом онкологическом диагнозе.')">
+        <div class="cond-dot"></div><div class="cond-name">Другие локализации</div><div class="cond-arrow">→</div>
+      </div>
+
     </div>
   </div>
 </section>
+
+<script>
+function openModal(title, tag, body) {
+  document.getElementById('cond-title').textContent = title;
+  document.getElementById('cond-tag').textContent = tag;
+  document.getElementById('cond-body').textContent = body;
+  var m = document.getElementById('cond-modal');
+  m.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+document.getElementById('cond-close').addEventListener('click', closeModal);
+document.getElementById('cond-overlay').addEventListener('click', closeModal);
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeModal(); });
+function closeModal() {
+  document.getElementById('cond-modal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+</script>
 
 <!-- CAREER -->
 <section class="career" id="career">
